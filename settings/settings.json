@@ -1,8 +1,9 @@
 {
   "prefix": "#",
-  "NomeDoBot": "nome da bot aqui",
-  "NickDono": "seu nome aqui",
-  "naomexa": "554891248900",
-  "numerodono": "Seu numero aqui",
-  "API_KEY_PLAY": "sua key aqui"
+  "NomeDoBot": "Nome Do Seu Bot Aqui",
+  "NickDono": "Seu Nome Aqui",
+  "numerodono": "Seu Numero Aqui",
+  "CHAVE_PLAY": "Sua Chave Play Aqui",
+  "LINK_GRUPO": "Link Do Seu Grupo Aqui",
+  "NOME_GRUPO": "Nome Do Seu Grupo Aqui"
 }

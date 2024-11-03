@@ -43,25 +43,19 @@ b.push(d);
 return b;
 };
 
-function upload (midia) {
-return new Promise(async (resolve, reject) => {
-try {
-let { ext } = await fromBuffer(midia);
-let form = new FormData();
-form.append('file', midia, 'tmp.' + ext);
-await fetch('https://telegra.ph/upload', {
-method: 'POST',
-body: form
-})
-.then(html => html.json())
-.then(post => {
-resolve('https://telegra.ph' + post[0].src);
-})
-.catch(erro => reject(erro));
-} catch (erro) {
-return console.log(erro);
-}
-});
+const upload = async(buffer) => {
+const { ext, mime } = (await fromBuffer(buffer)) || {};
+  const form = new FormData();
+  form.append("files[]", buffer, { filename: "tmp."+String(ext), contentType: mime });
+  try {
+    const { data } = await axios.post("https://pomf.lain.la/upload.php", form, {
+      headers: form.getHeaders(),
+    });   
+    console.log(data);  
+    return data.files[0].url
+  } catch (error) {
+    throw error;
+  }
 }
 
 function convertSticker(base64, author, pack){
@@ -201,13 +195,13 @@ var tempo = 'Boa Noite'
 }
 
 
-const banner2 = cfonts.render((`${tempo} tudo bem?\n\n\n\nYUSHII GERATION A\nVERSAO DA BOT: V6.9.2\nCOMPRE SUA APIKEY: +55 48 9124-8900`), {
+const banner2 = cfonts.render((`${tempo} tudo bem?\n\n\n\nYushii System Free !\nCOMPRE SUA CHAVE: +55 48 9124-8900`), {
 font: 'console',
 align: 'center',
 gradient: ['red', 'magenta']
 });
  
-const banner3 = cfonts.render((`YUSHII SYSTEM|BOT 6.9.2`), {
+const banner3 = cfonts.render((`YUSHII FREE`), {
   font: 'block',
   align: "center",
   gradient: ['cyan', 'magenta']
